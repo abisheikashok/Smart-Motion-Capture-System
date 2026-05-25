@@ -1,37 +1,57 @@
 # Smart Motion Capture System
 
-This project presents a stereo vision–based motion capture system to predict a dart’s 3D trajectory and impact point on a dartboard. The long-term objective is to establish the foundation for future hardware integration, where a sliding dartboard could automatically reposition itself to score bullseyes every time. The system includes two RGB webcams mounted on a 1 m rod with fixed 3D-printed attachments, so there were no degrees of freedom. A custom A2 calibration grid was printed, captured by the camera, and manually annotated Cartesian reference points to establish an accurate pixel-to-angle regression model.
+A stereo vision–based motion capture system for reconstructing a dart’s 3D trajectory and predicting its impact position on a dartboard using dual RGB cameras and real-time triangulation.
 
-A Python program then processed the pixel positions from the camera feeds to calculate the corresponding angles using the derived equation and computed the 3D coordinates using a trigonometric formula, achieving an error of 1.24 cm when tested with a green dart. I am working on implementing an approach which triangulates both the dartboard and the dart across frames to model the dart’s parabolic flight and determined its intersection with the dartboard plane equation. The dartboard has to be triangulated by detecting three distinct reference markers (such as LEDs or retroreflective tape) attached on the edges, so both cameras could map the correct points to be triangulated. I am still continuing to refine the system and am currently facing a challenge with the computational lag that prevents real-time 30 fps tracking.
+The long-term goal of this project is to build the foundation for an automated dartboard system capable of repositioning itself for bullseye alignment. The current implementation focuses on stereo calibration, dart tip detection, 3D reconstruction, and trajectory estimation using computer vision and geometric triangulation.
 
 ---
+
+## Features
+
+- Stereo camera–based 3D reconstruction
+- Real-time dart tip detection using OpenCV
+- Pixel-to-angle regression calibration model
+- Stereo triangulation for spatial coordinate estimation
+- Live 3D visualization using Matplotlib
+- Custom hardware mounting system with fixed stereo geometry
+
+---
+
 ## Project Status
 
-This project is currently under active development.
+### Implemented
 
-Implemented:
 - Stereo triangulation
 - Dart tip detection
-- 3D reconstruction
+- 3D coordinate reconstruction
+- Regression-based camera calibration
+- Live coordinate visualization
 
-In Progress:
+### In Progress
+
 - Dartboard plane triangulation
-- Real-time optimization
-- Automated impact prediction
+- Real-time optimization for stable 30 FPS tracking
+- Dart trajectory prediction
+- Automated impact point estimation
 
 ---
 
-## Technical Overview
+## Hardware Setup
 
-### Stereo Camera Configuration
+The system uses:
 
-Two synchronized RGB webcams (Logitech C920) are positioned at a fixed baseline distance.
+- 2 × Logitech C920 RGB webcams
+- Fixed 1 m baseline mounting rod
+- Custom 3D-printed camera mounts
+- A2 calibration grid for regression mapping
+
+The cameras are rigidly fixed with no degrees of freedom to maintain consistent stereo geometry.
 
 ```python
 BASELINE = 111.9  # cm
 ```
 
-Camera feeds are captured using OpenCV:
+Camera capture configuration:
 
 ```python
 cap1 = cv2.VideoCapture(1, cv2.CAP_DSHOW)
@@ -40,91 +60,194 @@ cap2 = cv2.VideoCapture(2, cv2.CAP_DSHOW)
 
 ---
 
-### Dart Tip Detection
+## System Pipeline
 
-The system identifies the dart tip through HSV color thresholding and contour analysis.
+### 1. Dart Tip Detection
+
+The dart tip is detected through HSV thresholding and contour analysis.
 
 ```python
 mask = cv2.inRange(hsv, (35, 50, 50), (85, 255, 255))
 ```
 
-Contours are filtered using geometric heuristics such as contour area and aspect ratio.
+Contours are filtered using:
+
+- Contour area
+- Aspect ratio
+- Geometric heuristics
+
+Example:
+
+```python
+for c in contours:
+    area = cv2.contourArea(c)
+
+    if area < 200:
+        continue
+
+    x, y, w, h = cv2.boundingRect(c)
+    aspect_ratio = h / (w + 1e-5)
+```
 
 ---
 
-### Pixel-to-Angle Mapping
+### 2. Pixel-to-Angle Calibration
 
-A quadratic regression model converts image-space coordinates into angular measurements.
+A quadratic regression model converts image-space pixel coordinates into angular measurements.
 
 ```python
 Anglex = (
     0.038002 * x
     - 0.001274 * y_inv
     - 0.000001 * x**2
+    + 0.000001 * x * y_inv
+    - 35.921325
 )
 ```
 
-The regression coefficients were experimentally derived through manual calibration.
+The regression coefficients were experimentally derived through manual calibration using a custom A2 Cartesian reference grid.
 
 ---
 
-### 3D Triangulation
+### 3. Stereo Triangulation
 
-Depth estimation is performed using stereo triangulation based on angular disparity between cameras.
+3D position estimation is computed using angular disparity between both cameras.
 
 ```python
 Z = (BASELINE * math.cos(ax1) * math.cos(ax2)) / math.sin(delta)
 ```
 
-The reconstructed spatial coordinates are represented as:
+The reconstructed coordinates are represented as:
 
 ```python
 (X, Y, Z)
 ```
 
+Core triangulation implementation:
+
+```python
+def calculate_3d_position(ax1, ay1, ax2, ay2):
+    delta = ax1 - ax2
+
+    if abs(delta) < 1e-4:
+        return None
+
+    Z = (BASELINE * math.cos(ax1) * math.cos(ax2)) / math.sin(delta)
+    Z = abs(Z)
+
+    X = Z * math.tan(ax1)
+    Y = Z * math.tan(ay1)
+
+    return X, Y, Z
+```
+
 ---
 
-### Visualization Pipeline
+### 4. Visualization Pipeline
 
-The reconstructed coordinates are visualized in real time using a live 3D Matplotlib plot alongside OpenCV camera feeds.
+The reconstructed coordinates are visualized in real time using:
+
+- OpenCV camera feeds
+- Live 3D Matplotlib plotting
+- Coordinate display overlays
+
+```python
+ax.scatter(X, Y, Z, s=80)
+```
 
 ---
 
-### Triangulation Mathematics
-![Diagram and Math](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/aa2d4a5c110eca87cadbd1d43dbfea511b78fc9b/Diagram%26Math.png)
+## Experimental Results
 
-### CAD Design (Click on the image to view the model)
-[![Camera Lock Mount](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/752beec581bf4c9687b445ee4616782097070732/CAD%20Design.png)](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/b41ed5e3cfe2660e48bb3dea2031848e713ede65/Rod%20attachment%201.stl)
+- Approximate reconstruction error: **1.24 cm**
+- Successful stereo tracking of a green dart
+- Real-time coordinate visualization
 
-### Experimental Setup
-![Setup](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/aa2d4a5c110eca87cadbd1d43dbfea511b78fc9b/Setup.png)
+---
 
-### Physical Demonstration
-![Demonstration](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/aa2d4a5c110eca87cadbd1d43dbfea511b78fc9b/Demonstration.jpg)
+## Future Development
 
-### Result
-![Result](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/ebf1b810f0b6fdcf6f48177a9d4155627b631c71/Result_position.jpg)
+Current development focuses on:
+
+- Dartboard plane reconstruction
+- Multi-marker stereo correspondence
+- Parabolic trajectory modeling
+- Dartboard impact prediction
+- Real-time computational optimization
+- Hardware scalability for automated dartboard systems
+
+The intended future approach triangulates both the dart and dartboard across frames to estimate the dart’s trajectory and determine the intersection point with the dartboard plane equation.
 
 ---
 
 ## Current Limitations
 
-- Dartboard plane triangulation is still under development
-- Marker correspondence between stereo frames remains computationally unstable
-- Real-time performance at 30 FPS is not yet consistently achieved
-- Detection robustness is sensitive to lighting variation and motion blur
+- Dartboard triangulation is still under development
+- Marker correspondence across stereo frames remains unstable
+- Real-time 30 FPS tracking is not consistently achieved
+- Detection robustness is sensitive to:
+  - Lighting variation
+  - Motion blur
+  - Occlusion
 
 ---
 
-## Ongoing Development
+## Repository Structure
 
-Current development is focused on:
+```text
+Smart-Motion-Capture-System/
+│
+├── main/
+│   ├── Dart_coordinate_prediction_only.py
+│   ├── regression.py
+│   └── README.md
+│
+├── assets/
+│   ├── CAD Design.png
+│   ├── Demonstration.jpg
+│   ├── Diagram&Math.png
+│   ├── Rod attachment 1.stl
+│   ├── Rod attachment 2.stl
+│   └── Setup.png
+│
+├── calibration/
+│   ├── Grid_image.jpg
+│   └── logitechc920.xlsx
+│
+└── results/
+    └── Result_position.jpg
+```
+---
 
-- Reliable dartboard plane reconstruction
-- Multi-marker stereo correspondence
-- Computational optimization for low-latency processing
-- Improved trajectory prediction accuracy
-- Hardware scalability for automated dartboard systems
+## Media
+
+### Triangulation Mathematics
+
+![Diagram and Math](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/assets/Diagram%26Math.png)
+
+---
+
+### CAD Design
+
+[![Camera Lock Mount](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/assets/CAD%20Design.png)](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/assets/Rod%20attachment%201.stl)
+
+---
+
+### Experimental Setup
+
+![Setup](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/assets/Setup.png)
+
+---
+
+### Physical Demonstration
+
+![Demonstration](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/assets/Demonstration.jpg)
+
+---
+
+### Result
+
+![Result](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/results/Result_position.jpg)
 
 ---
 
@@ -134,7 +257,7 @@ Current development is focused on:
 - OpenCV
 - NumPy
 - Matplotlib
-- Stereo Vision Geometry (Triangulation)
+- Stereo Vision Geometry
 - Regression-Based Camera Calibration
 
 ---
@@ -144,8 +267,11 @@ Current development is focused on:
 | Contributor | Profile | Contributions |
 |---|---|---|
 | Ashok Abisheik | [GitHub](https://github.com/abisheikashok) | Stereo vision pipeline, triangulation, OpenCV implementation, calibration modeling |
-| Shreyas Panda |  | Hardware setup, CAD mounting system, calibration support |
+| Shreyas Panda || Hardware setup, CAD mounting system, calibration support |
 
 ---
 
-```
+## Repository
+
+GitHub Repository:  
+https://github.com/abisheikashok/Smart-Motion-Capture-System
