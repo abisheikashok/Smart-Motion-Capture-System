@@ -72,7 +72,7 @@ The regression coefficients were experimentally derived through manual calibrati
 
 ---
 
-![Setup and Calibration](assets/Setup.png)
+![Setup and Calibration](-Smart-Motion-Capture-System/assets/Setup.png)
 
 ### 3D Triangulation
 
