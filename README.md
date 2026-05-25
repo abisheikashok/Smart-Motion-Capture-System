@@ -44,8 +44,6 @@ cap2 = cv2.VideoCapture(2, cv2.CAP_DSHOW)
 
 ---
 
-![Alt Text](assets/Demonstration.jpg)
-
 ### Dart Tip Detection
 
 The system identifies the dart tip through HSV color thresholding and contour analysis.
@@ -73,6 +71,8 @@ Anglex = (
 The regression coefficients were experimentally derived through manual calibration.
 
 ---
+
+![Setup and Calibration](assets/Setup.png)
 
 ### 3D Triangulation
 
