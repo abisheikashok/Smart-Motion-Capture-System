@@ -95,16 +95,19 @@ The reconstructed coordinates are visualized in real time using a live 3D Matplo
 ---
 
 ### CAD Design
-![CAD Design](CADDesign.png)
+![CAD Design](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/aa2d4a5c110eca87cadbd1d43dbfea511b78fc9b/CADDesign.png)
 
 ### Triangulation Mathematics
-![Diagram and Math](Diagram&Math.png)
+![Diagram and Math](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/aa2d4a5c110eca87cadbd1d43dbfea511b78fc9b/Diagram%26Math.png)
 
 ### Experimental Setup
-![Setup](Setup.png)
+![Setup](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/aa2d4a5c110eca87cadbd1d43dbfea511b78fc9b/Setup.png)
 
 ### Physical Demonstration
-![Demonstration](Demonstration.png)
+![Demonstration](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/aa2d4a5c110eca87cadbd1d43dbfea511b78fc9b/Demonstration.jpg)
+
+### Result
+![Result](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/ebf1b810f0b6fdcf6f48177a9d4155627b631c71/Result_position.jpg)
 
 ---
 
