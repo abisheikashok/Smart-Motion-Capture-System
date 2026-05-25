@@ -6,7 +6,7 @@ from scipy.optimize import curve_fit
 # LOAD DATA
 # =========================
 
-file_path = r"C:\Abisheik\Smart Motion Capture System\callibration\logitechc920.xlsx"
+file_path = "calibration\logitechc920.xlsx"
 
 df = pd.read_excel(file_path)
 
