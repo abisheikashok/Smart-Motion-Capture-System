@@ -223,31 +223,31 @@ Smart-Motion-Capture-System/
 
 ### Triangulation Mathematics
 
-![Diagram and Math](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/assets/Diagram%26Math.png)
+![Diagram and Math](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/752beec581bf4c9687b445ee4616782097070732/Diagram%26Math.png)
 
 ---
 
 ### CAD Design
 
-[![Camera Lock Mount](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/assets/CAD%20Design.png)](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/assets/Rod%20attachment%201.stl)
+[![Camera Lock Mount](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/752beec581bf4c9687b445ee4616782097070732/CAD%20Design.png)](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/752beec581bf4c9687b445ee4616782097070732/Rod%20attachment%201.stl)
 
 ---
 
 ### Experimental Setup
 
-![Setup](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/assets/Setup.png)
+![Setup](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/752beec581bf4c9687b445ee4616782097070732/Setup.png)
 
 ---
 
 ### Physical Demonstration
 
-![Demonstration](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/assets/Demonstration.jpg)
+![Demonstration](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/752beec581bf4c9687b445ee4616782097070732/Demonstration.jpg)
 
 ---
 
 ### Result
 
-![Result](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/main/results/Result_position.jpg)
+![Result](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/ebf1b810f0b6fdcf6f48177a9d4155627b631c71/Result_position.jpg)
 
 ---
 
