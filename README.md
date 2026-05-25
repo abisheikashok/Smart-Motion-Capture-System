@@ -227,7 +227,7 @@ Smart-Motion-Capture-System/
 
 ---
 
-### CAD Design (Click to view the model)
+### CAD Design (Click the image to view the model)
 
 [![Camera Lock Mount](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/752beec581bf4c9687b445ee4616782097070732/CAD%20Design.png)](https://github.com/abisheikashok/Smart-Motion-Capture-System/blob/752beec581bf4c9687b445ee4616782097070732/Rod%20attachment%201.stl)
 
