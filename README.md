@@ -95,7 +95,7 @@ The reconstructed coordinates are visualized in real time using a live 3D Matplo
 ---
 
 ### CAD Design
-![Camera Lock Mount](Rod attachment 1.stl)
+![Camera Lock Mount](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/b41ed5e3cfe2660e48bb3dea2031848e713ede65/Rod%20attachment%201.stl)
 
 
 ### Triangulation Mathematics
