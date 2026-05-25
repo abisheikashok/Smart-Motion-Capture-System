@@ -123,7 +123,7 @@ Current development is focused on:
 - Matplotlib
 - Stereo Vision Geometry
 - Regression-Based Camera Calibration
-```
+
 ---
 
 ## Author
@@ -131,3 +131,5 @@ Current development is focused on:
 Ashok Abisheik
 
 ---
+
+```
