@@ -44,6 +44,8 @@ cap2 = cv2.VideoCapture(2, cv2.CAP_DSHOW)
 
 ---
 
+![Alt Text](assets/Demonstration.jpg)
+
 ### Dart Tip Detection
 
 The system identifies the dart tip through HSV color thresholding and contour analysis.
