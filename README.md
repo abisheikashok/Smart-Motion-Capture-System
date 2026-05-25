@@ -95,7 +95,9 @@ The reconstructed coordinates are visualized in real time using a live 3D Matplo
 ---
 
 ### CAD Design
-![CAD Design](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/aa2d4a5c110eca87cadbd1d43dbfea511b78fc9b/CADDesign.png)
+![CAD Design]([https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/aa2d4a5c110eca87cadbd1d43dbfea511b78fc9b/CADDesign.png](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/30f46071650f31b4603c13f110396405150311f1/Rod%20attachment%201.stl))
+
+
 
 ### Triangulation Mathematics
 ![Diagram and Math](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/aa2d4a5c110eca87cadbd1d43dbfea511b78fc9b/Diagram%26Math.png)
