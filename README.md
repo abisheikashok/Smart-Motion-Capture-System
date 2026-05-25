@@ -72,8 +72,6 @@ The regression coefficients were experimentally derived through manual calibrati
 
 ---
 
-![Setup and Calibration](-Smart-Motion-Capture-System/assets/Setup.png)
-
 ### 3D Triangulation
 
 Depth estimation is performed using stereo triangulation based on angular disparity between cameras.
@@ -93,6 +91,20 @@ The reconstructed spatial coordinates are represented as:
 ### Visualization Pipeline
 
 The reconstructed coordinates are visualized in real time using a live 3D Matplotlib plot alongside OpenCV camera feeds.
+
+---
+
+### CAD Design
+![CAD Design](assets/cad_design.png)
+
+### Physical Demonstration
+![Demonstration](assets/demonstration.png)
+
+### Triangulation Mathematics
+![Diagram and Math](assets/diagram_math.png)
+
+### Experimental Setup
+![Setup](assets/setup.png)
 
 ---
 
