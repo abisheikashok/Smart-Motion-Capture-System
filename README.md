@@ -95,16 +95,16 @@ The reconstructed coordinates are visualized in real time using a live 3D Matplo
 ---
 
 ### CAD Design
-![CAD Design](assets/cad_design.png)
+![CAD Design](cad_design.png)
 
 ### Physical Demonstration
-![Demonstration](assets/demonstration.png)
+![Demonstration](Demonstration.png)
 
 ### Triangulation Mathematics
-![Diagram and Math](assets/diagram_math.png)
+![Diagram and Math](diagram&math.png)
 
 ### Experimental Setup
-![Setup](assets/setup.png)
+![Setup](setup.png)
 
 ---
 
