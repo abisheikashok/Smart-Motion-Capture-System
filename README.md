@@ -188,7 +188,6 @@ The intended future approach triangulates both the dart and dartboard across fra
 - Detection robustness is sensitive to:
   - Lighting variation
   - Motion blur
-  - Occlusion
 
 ---
 
