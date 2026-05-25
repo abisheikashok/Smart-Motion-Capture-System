@@ -94,7 +94,7 @@ The reconstructed coordinates are visualized in real time using a live 3D Matplo
 
 ---
 
-### CAD Design
+### CAD Design (Click on the image to view the model)
 [![Camera Lock Mount](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/752beec581bf4c9687b445ee4616782097070732/CAD%20Design.png)](https://github.com/abisheikashok/-Smart-Motion-Capture-System/blob/b41ed5e3cfe2660e48bb3dea2031848e713ede65/Rod%20attachment%201.stl)
 
 
