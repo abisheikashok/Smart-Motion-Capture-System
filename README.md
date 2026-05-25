@@ -29,7 +29,7 @@ In Progress:
 
 ### Stereo Camera Configuration
 
-Two synchronized RGB webcams are positioned at a fixed baseline distance.
+Two synchronized RGB webcams (Logitech C920) are positioned at a fixed baseline distance.
 
 ```python
 BASELINE = 111.9  # cm
