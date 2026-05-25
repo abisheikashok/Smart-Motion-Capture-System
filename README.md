@@ -1,10 +1,14 @@
 # Smart Motion Capture System
 
 This project presents a stereo vision–based Smart Motion Capture system designed to predict a dart’s three-dimensional trajectory and its point of impact on a dartboard. Developed as part of an intra-school Science Journal program in a two-member team, the objective was to build a precise and scalable motion-tracking framework that could later support automated hardware, such as a dynamically adjustable dartboard for consistent bullseyes.
+
 Two RGB webcams were rigidly mounted on a one-meter rod using custom 3D-printed fixtures to eliminate degrees of freedom and ensure stable calibration. To establish an accurate pixel-to-angle mapping, an A2-sized grid board was fabricated and manually calibrated using a laser level. Multiple captures were taken to obtain a reliable reference image, after which Cartesian coordinates were manually annotated due to the grid’s lack of automatic detectability.
-Using this pixel–angle dataset, a quadratic regression model was derived to map image coordinates to angular measurements for each camera. A Python-based pipeline then reconstructs 3D positions through trigonometric triangulation, models the dart’s parabolic trajectory across frames, and computes its intersection with the dartboard plane. The current implementation achieves an average positional error of approximately 1.24 cm under controlled conditions.
 
+Using this pixel–angle dataset, a quadratic regression model was derived to map image coordinates to angular measurements for each camera. A Python-based pipeline then reconstructs 3D positions through trigonometric triangulation, models the dart’s parabolic trajectory across frames, and computes its intersection with the dartboard plane.
 
+The current implementation achieves an average positional error of approximately 1.24 cm under controlled conditions.
+
+---
 ## Project Status
 
 This project is currently under active development.
@@ -120,3 +124,10 @@ Current development is focused on:
 - Stereo Vision Geometry
 - Regression-Based Camera Calibration
 ```
+---
+
+## Author
+
+Ashok Abisheik
+
+---
