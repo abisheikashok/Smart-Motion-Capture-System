@@ -134,7 +134,7 @@ Current development is focused on:
 - OpenCV
 - NumPy
 - Matplotlib
-- Stereo Vision Geometry
+- Stereo Vision Geometry (Triangulation)
 - Regression-Based Camera Calibration
 
 ---
