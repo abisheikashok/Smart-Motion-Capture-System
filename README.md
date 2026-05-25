@@ -140,11 +140,12 @@ Current development is focused on:
 
 ---
 
-## Author
+## Contributors
 
-Ashok Abisheik
-
-
+| Contributor | Profile | Contributions |
+|---|---|---|
+| Ashok Abisheik | [GitHub](https://github.com/abisheikashok) | Stereo vision pipeline, triangulation, OpenCV implementation, calibration modeling |
+| Shreyas Panda |  | Hardware setup, CAD mounting system, calibration support |
 
 ---
 
