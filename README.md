@@ -1,12 +1,8 @@
 # Smart Motion Capture System
 
-This project presents a stereo vision–based Smart Motion Capture system designed to predict a dart’s three-dimensional trajectory and its point of impact on a dartboard. Developed as part of an intra-school Science Journal program in a two-member team, the objective was to build a precise and scalable motion-tracking framework that could later support automated hardware, such as a dynamically adjustable dartboard for consistent bullseyes.
+This project presents a stereo vision–based motion capture system to predict a dart’s 3D trajectory and impact point on a dartboard. The long-term objective is to establish the foundation for future hardware integration, where a sliding dartboard could automatically reposition itself to score bullseyes every time. The system includes two RGB webcams mounted on a 1 m rod with fixed 3D-printed attachments, so there were no degrees of freedom. A custom A2 calibration grid was printed, captured by the camera, and manually annotated Cartesian reference points to establish an accurate pixel-to-angle regression model.
 
-Two RGB webcams were rigidly mounted on a one-meter rod using custom 3D-printed fixtures to eliminate degrees of freedom and ensure stable calibration. To establish an accurate pixel-to-angle mapping, an A2-sized grid board was fabricated and manually calibrated using a laser level. Multiple captures were taken to obtain a reliable reference image, after which Cartesian coordinates were manually annotated due to the grid’s lack of automatic detectability.
-
-Using this pixel–angle dataset, a quadratic regression model was derived to map image coordinates to angular measurements for each camera. A Python-based pipeline then reconstructs 3D positions through trigonometric triangulation, models the dart’s parabolic trajectory across frames, and computes its intersection with the dartboard plane.
-
-The current implementation achieves an average positional error of approximately 1.24 cm under controlled conditions.
+A Python program then processed the pixel positions from the camera feeds to calculate the corresponding angles using the derived equation and computed the 3D coordinates using a trigonometric formula, achieving an error of 1.24 cm when tested with a green ball. I implemented an approach which triangulated both the dartboard and the dart across frames to model the dart’s parabolic flight and determined its intersection with the dartboard plane equation. The dartboard had to be triangulated by detecting three distinct reference markers (such as LEDs or retroreflective tape) attached on the edges, so both cameras could map the correct points to be triangulated. I am still continuing to refine the system and am currently facing a challenge with the computational lag that prevents real-time 30 fps tracking.
 
 ---
 ## Project Status
